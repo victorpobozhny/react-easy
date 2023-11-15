@@ -9,9 +9,10 @@ type OnOffPropsType = {
 function OnOff(props: OnOffPropsType) {
     console.log("Accordion rendering")
     return (
-        <div>
+        <div >
             <button onClick={()=>props.selector()}>on|off</button>
-            {props.toggle && <span>Turned on</span> || <span>Turned off</span>}
+            {props.toggle && <span style={{backgroundColor: 'lightgreen'}}>Turned on</span>
+            || <span style={{backgroundColor: 'red'}}>Turned off</span>}
         </div>
     )
 }
