@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./components/Accordion";
 import {Rating} from "./components/Rating/Rating";
+import UncontrolledAccordion from "./components/UncontrolledAccordion";
+import {UncontrolledRating} from "./components/Rating/UncontrolledRating";
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
             <Rating value={3} />
             <Rating value={4} />
             <Rating value={5} />
+            <UncontrolledRating />
+            <UncontrolledAccordion title={'Title Accordion 2 (uncontrolled)'}/>
         </div>
     );
 }

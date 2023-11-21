@@ -10,7 +10,7 @@ type  AccordionPropsType = {
 
 function Accordion(props: AccordionPropsType) {
 
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
     function changeToggle () {
         setToggle(!toggle)
     }
@@ -21,7 +21,8 @@ function Accordion(props: AccordionPropsType) {
         return (
             <div>
                 <AccordionTitle title={props.titleValue} handler={props.handler}/>
-                <OnOff toggle={toggle} selector={changeToggle}/>
+                <OnOff/>
+                <OnOff/>
                 {!props.collapsed && <AccordionBody/> }
             </div>
         )
