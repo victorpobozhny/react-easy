@@ -13,17 +13,20 @@ function App() {
         setCollapsed(!collapsed)
     }
 
+    const [state, setState] = useState<number>(0)
+
+    function controlRating (id: number) {
+        setState(id)
+    }
+
     console.log("App rendered")
     return (
-        <div>
+        <div className={'App'}>
             <Accordion titleValue={"Title Accordion 1"} collapsed={collapsed} handler={onClickHandler}/>
-            <Rating value={1} />
-            <Rating value={2} />
-            <Rating value={3} />
-            <Rating value={4} />
-            <Rating value={5} />
+            <Rating value={state} controlRating={controlRating}/>
+
             <UncontrolledRating />
-            <UncontrolledAccordion title={'Title Accordion 2 (uncontrolled)'}/>
+            <UncontrolledAccordion title={'Title Accordion 2 (uncontrolled)'} />
         </div>
     );
 }
