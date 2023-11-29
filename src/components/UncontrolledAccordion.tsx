@@ -1,12 +1,10 @@
 import React, {useState} from "react";
-import OnOff from "./OnOff/OnOff";
 
 type UncontrolledAccordionPropsType = {
     title: string
 }
 
-
-function UncontrolledAccordion(props:UncontrolledAccordionPropsType) {
+function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
 
     const [collapsed, setCollapsed] = useState<boolean>(true)
 
@@ -15,36 +13,32 @@ function UncontrolledAccordion(props:UncontrolledAccordionPropsType) {
     }
 
     console.log("Accordion rendering")
-        return (
-            <div>
-                <UncontrolledAccordionTitle title={props.title} handler={collapseChange}/>
-                <OnOff/>
-                <OnOff/>
-                {!collapsed && <UncontrolledAccordionBody/> }
-            </div>
-        )
+    return (
+        <div>
+            <UncontrolledAccordionTitle title={props.title} handler={collapseChange}/>
+            {!collapsed && <UncontrolledAccordionBody/>}
+        </div>
+    )
 }
 
 
 type UncontrolledAccordionTitlePropsType = {
     title: string
-    handler: ()=>void
+    handler: () => void
 }
 
 function UncontrolledAccordionTitle(props: UncontrolledAccordionTitlePropsType) {
 
+    const onClickHandler = () => {
+        props.handler()
+    }
 
-    console.log("AccordionTitle rendering")
     return (
-
-        <><h3>{props.title}</h3>
-        <button onClick={()=>props.handler()}>Collapse/uncollapse</button>
-        </>
+        <h3 onClick={onClickHandler}>{props.title}</h3>
     )
 }
 
 function UncontrolledAccordionBody() {
-    console.log("AccordionBody rendering")
     return (
         <ul>
             <li>1</li>

@@ -1,67 +1,38 @@
-import React, {useState} from "react";
+import React from "react";
 import OnOff from "./OnOff/OnOff";
 
 type  AccordionPropsType = {
     titleValue: string,
     collapsed: boolean
-    handler: ()=>void
+    handler: () => void
 }
 
 
 function Accordion(props: AccordionPropsType) {
 
-    const [toggle, setToggle] = useState(false)
-    function changeToggle () {
-        setToggle(!toggle)
-    }
-
-
-
     console.log("Accordion rendering")
-        return (
-            <div>
-                <AccordionTitle title={props.titleValue} handler={props.handler}/>
-                <OnOff/>
-                <OnOff/>
-                {!props.collapsed && <AccordionBody/> }
-            </div>
-        )
+    return (
+        <div>
+            <AccordionTitle title={props.titleValue} handler={props.handler}/>
+            {!props.collapsed && <AccordionBody/>}
+            <OnOff/>
+            <OnOff/>
+        </div>
+    )
 }
-
-
-
-// function Accordion(props: AccordionPropsType) {
-//     console.log("Accordion rendering")
-//
-//     if (props.collapsed) {
-//         return (
-//             <div>
-//                 <AccordionTitle title={props.titleValue} handler={props.handler}/>
-//             </div>
-//         )
-//     }
-//     else {
-//         return (
-//             <div>
-//                 <AccordionTitle title={props.titleValue} handler={props.handler}/>
-//                 <AccordionBody/>
-//             </div>
-//         )
-//     }
-// }
 
 type AccordionTitlePropsType = {
     title: string
-    handler: ()=>void
+    handler: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    console.log("AccordionTitle rendering")
-    return (
+    const onClickHandler = () => {
+        props.handler()
+    }
 
-        <><h3>{props.title}</h3>
-        <button onClick={()=>props.handler()}>Collapse/uncollapse</button>
-        </>
+    return (
+        <h3 onClick={onClickHandler}>{props.title}</h3>
     )
 }
 

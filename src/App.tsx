@@ -15,18 +15,15 @@ function App() {
 
     const [state, setState] = useState<number>(0)
 
-    function controlRating (id: number) {
-        setState(id)
-    }
-
     console.log("App rendered")
     return (
         <div className={'App'}>
-            <Accordion titleValue={"Title Accordion 1"} collapsed={collapsed} handler={onClickHandler}/>
-            <Rating value={state} controlRating={controlRating}/>
+            <PageTitle title={'React - easy'} />
+            <Accordion titleValue={"Title Controlled Accordion 1 (click me :)"} collapsed={collapsed} handler={onClickHandler}/>
+            <Rating value={state} controlRating={setState}/>
 
             <UncontrolledRating />
-            <UncontrolledAccordion title={'Title Accordion 2 (uncontrolled)'} />
+            <UncontrolledAccordion title={'Title Uncontrolled Accordion 2 (click me :)'} />
         </div>
     );
 }
