@@ -1,11 +1,7 @@
 import React, {useState} from "react";
 
-type UncontrolledAccordionPropsType = {
-    title: string
-}
-
-function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
-
+function UncontrolledAccordion() {
+    const title = 'Title Uncontrolled Accordion 2 (click me :)'
     const [collapsed, setCollapsed] = useState<boolean>(true)
 
     const collapseChange = () => {
@@ -15,7 +11,7 @@ function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     console.log("Accordion rendering")
     return (
         <div>
-            <UncontrolledAccordionTitle title={props.title} handler={collapseChange}/>
+            <UncontrolledAccordionTitle title={title} handler={collapseChange}/>
             {!collapsed && <UncontrolledAccordionBody/>}
         </div>
     )

@@ -1,11 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
-type OnOffPropsType = {
-    stateOnOff: boolean
-    setStateOnOff: (stateOnOff: boolean) => void
-}
+function UncontrolledOnOff() {
 
-function OnOff(props: OnOffPropsType) {
+    const [state, setState] = useState<boolean>(false)
 
     const onStyle = {
         width: '30px',
@@ -15,7 +12,7 @@ function OnOff(props: OnOffPropsType) {
         marginLeft: '5px',
         marginTop: '5px',
         padding: '2px',
-        backgroundColor: props.stateOnOff ? 'green' : 'white',
+        backgroundColor: state ? 'green' : 'white',
         cursor: 'pointer'
     }
     const offStyle = {
@@ -26,7 +23,7 @@ function OnOff(props: OnOffPropsType) {
         marginLeft: '5px',
         marginTop: '5px',
         padding: '2px',
-        backgroundColor: !props.stateOnOff ? 'red' : 'white',
+        backgroundColor: !state ? 'red' : 'white',
         cursor: 'pointer'
     }
     const indicatorStyle = {
@@ -36,11 +33,11 @@ function OnOff(props: OnOffPropsType) {
         borderRadius: '15px',
         display: 'inline-block',
         marginLeft: '5px',
-        backgroundColor: props.stateOnOff ? 'green' : 'red'
+        backgroundColor: state ? 'green' : 'red'
 
     }
     const onClickHandler = () => {
-        props.setStateOnOff(!props.stateOnOff)
+        setState(!state)
     }
     console.log("Accordion rendering")
     return (
@@ -48,11 +45,9 @@ function OnOff(props: OnOffPropsType) {
             <div style={onStyle} onClick={onClickHandler}>On</div>
             <div style={offStyle} onClick={onClickHandler}>Off</div>
             <div style={indicatorStyle}> </div>
-
-
         </div>
     )
 }
 
 
-export default OnOff;
+export default UncontrolledOnOff;

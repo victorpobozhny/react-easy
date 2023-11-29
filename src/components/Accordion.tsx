@@ -1,5 +1,5 @@
 import React from "react";
-import OnOff from "./OnOff/OnOff";
+
 
 type  AccordionPropsType = {
     titleValue: string,
@@ -15,8 +15,6 @@ function Accordion(props: AccordionPropsType) {
         <div>
             <AccordionTitle title={props.titleValue} handler={props.handler}/>
             {!props.collapsed && <AccordionBody/>}
-            <OnOff/>
-            <OnOff/>
         </div>
     )
 }
