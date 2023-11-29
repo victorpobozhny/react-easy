@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 
-function UncontrolledOnOff() {
+type UncontrolledOnOffPropsType = {
+    setSwitchOn: (switchOn: boolean) => void
+}
+
+function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
 
     const [state, setState] = useState<boolean>(false)
 
@@ -38,8 +42,9 @@ function UncontrolledOnOff() {
     }
     const onClickHandler = () => {
         setState(!state)
+        props.setSwitchOn(!state)
     }
-    console.log("Accordion rendering")
+
     return (
         <div>
             <div style={onStyle} onClick={onClickHandler}>On</div>

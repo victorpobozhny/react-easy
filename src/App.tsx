@@ -18,14 +18,14 @@ function App() {
     const [state, setState] = useState<number>(0)
 
     const [stateOnOff, setStateOnOff] = useState<boolean>(false)
-
+    const [switchOn, setSwitchOn] = useState<boolean>(false)
     return (
         <div className={'App'}>
             <PageTitle title={'React - easy'}/>
 
             <Accordion titleValue={"Title Controlled Accordion 1 (click me :)"}
                        collapsed={collapsed}
-                       handler={onClickHandler}/>
+                       onChange={onClickHandler}/>
             <Rating
                 value={state}
                 controlRating={setState}/>
@@ -36,7 +36,8 @@ function App() {
 
             <UncontrolledAccordion/>
             <UncontrolledRating/>
-            <UncontrolledOnOff/>
+            <UncontrolledOnOff setSwitchOn={setSwitchOn}/>
+            <p>{switchOn.toString()}</p>
         </div>
     );
 }

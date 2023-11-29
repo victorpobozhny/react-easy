@@ -48,8 +48,6 @@ function OnOff(props: OnOffPropsType) {
             <div style={onStyle} onClick={onClickHandler}>On</div>
             <div style={offStyle} onClick={onClickHandler}>Off</div>
             <div style={indicatorStyle}> </div>
-
-
         </div>
     )
 }
