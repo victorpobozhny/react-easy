@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import  Accordion from './Accordion';
 import React, {useState} from "react";
 import { action } from '@storybook/addon-actions';
+import onClickHandler from './Accordion'
+import {argsHash} from "@storybook/blocks";
 
 
 const meta: Meta<typeof Accordion> = {
@@ -15,7 +17,7 @@ export const FirstStory: Story = {
     args: {
         titleValue: "Accordion",
         collapsed: true,
-        onChange: () => {},
+        onChange: action('collapsed or uncollapsed accordion'),
     },
 };
 

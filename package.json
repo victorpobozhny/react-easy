@@ -44,18 +44,22 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "7.6.4",
-    "@storybook/addon-interactions": "7.6.4",
-    "@storybook/addon-links": "7.6.4",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@storybook/addon-essentials": "8.0.0-alpha.1",
+    "@storybook/addon-interactions": "8.0.0-alpha.1",
+    "@storybook/addon-links": "8.0.0-alpha.1",
+    "@storybook/addon-mdx-gfm": "8.0.0-alpha.1",
     "@storybook/addon-onboarding": "1.0.9",
-    "@storybook/blocks": "7.6.4",
-    "@storybook/preset-create-react-app": "7.6.4",
-    "@storybook/react": "7.6.4",
-    "@storybook/react-webpack5": "7.6.4",
-    "@storybook/test": "7.6.4",
+    "@storybook/blocks": "8.0.0-alpha.1",
+    "@storybook/preset-create-react-app": "8.0.0-alpha.1",
+    "@storybook/react": "8.0.0-alpha.1",
+    "@storybook/react-webpack5": "8.0.0-alpha.1",
+    "@storybook/test": "8.0.0-alpha.1",
     "eslint-plugin-storybook": "^0.6.15",
     "prop-types": "15.8.1",
-    "storybook": "7.6.4",
+    "storybook": "8.0.0-alpha.1",
     "webpack": "5.89.0"
   }
 }
