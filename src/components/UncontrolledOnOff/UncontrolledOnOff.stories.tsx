@@ -1,13 +1,13 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import {OnOff} from './OnOff';
-import {bool} from "prop-types";
+import {UncontrolledOnOff} from './UncontrolledOnOff';
 import {useState} from "react";
 import {action} from "@storybook/addon-actions";
+import {bool} from "prop-types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-    title: 'OnOff Component',
-    component: OnOff,
+    title: 'UncontrolledOnOff Component',
+    component: UncontrolledOnOff,
     parameters: {
         // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
@@ -16,9 +16,8 @@ const meta = {
     tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/api/argtypes
     argTypes: {
-        stateOnOff: bool,
-        setStateOnOff: (stateOnOff: boolean) => {
-        },
+        defaultOn: bool,
+        setSwitchOn: (switchOn: boolean) => {},
     },
 }
 //satisfies Meta<typeof Rating>;
@@ -28,24 +27,30 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 
-export const OnOffSwitchable = () => {
-    const [state, setState] = useState<boolean>(false)
-    return <OnOff stateOnOff={state} setStateOnOff={setState}/>
+export const OnOff = () => {
+const [def, setDef] = useState(false)
+    return <UncontrolledOnOff setSwitchOn={()=>{setDef(!def)}} defaultOn={def}/>
 
 };
 
-export const ON_Mode: Story = {
+export const UncontrolledOnOff_WithAction: Story = {
     args: {
-        stateOnOff: true,
-        setStateOnOff: action('on or off clicked')
+        setSwitchOn: action('on or off clicked')
     },
 };
-export const OFF_Mode: Story = {
+export const ON: Story = {
     args: {
-        stateOnOff: false,
-        setStateOnOff: action('on or off clicked')
+        defaultOn: true,
+        setSwitchOn: action('on or off clicked')
     },
 };
+export const OFF: Story = {
+    args: {
+        defaultOn: false,
+        setSwitchOn: action('on or off clicked')
+    },
+};
+
 
 
 

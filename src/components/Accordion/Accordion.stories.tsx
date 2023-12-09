@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import  Accordion from './Accordion';
 import React, {useState} from "react";
 import { action } from '@storybook/addon-actions';
-import onClickHandler from './Accordion'
-import {argsHash} from "@storybook/blocks";
 
 
 const meta: Meta<typeof Accordion> = {
