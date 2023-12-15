@@ -20,7 +20,7 @@ export const UncontrolledInput = () => {
 
     return (
         <div>
-            <input value={state} onChange={onChangeHandler}/>--- {state}
+            <input onChange={onChangeHandler}/>--- {state}
             <div>
                 <input type={"text"} ref={refText}/>
                 <button onClick={onClickHandler}>save</button>

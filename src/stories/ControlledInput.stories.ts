@@ -2,6 +2,7 @@ import type {Meta, StoryObj} from '@storybook/react';
 
 import {ControlledInput} from "./ControlledInput";
 import {string} from "prop-types";
+import {action} from "@storybook/addon-actions";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -29,5 +30,6 @@ export const Primary: Story = {
         primary: true,
         label: 'ControlledInput',
         value: 'incubator.by'
+
     },
 };
