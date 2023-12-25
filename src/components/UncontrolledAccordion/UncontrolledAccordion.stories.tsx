@@ -1,14 +1,36 @@
-import React, {useState} from "react";
+import type {Meta} from '@storybook/react';
+import UncontrolledAccordion from './UncontrolledAccordion';
+import {action} from '@storybook/addon-actions';
+import React, {useReducer} from "react";
+import {ActionType} from "./reducer";
 
-function UncontrolledAccordion() {
+
+const meta: Meta<typeof UncontrolledAccordion> = {
+    component: UncontrolledAccordion,
+};
+export default meta;
+const reducer = (state: boolean, action: ActionType) => {
+    if (action.type == 'TOGGLE-COLLAPSED') {
+        return !state
+    }
+    return state
+}
+
+
+export function Demo() {
+
+
     const title = 'Title Uncontrolled Accordion 2 (click me :)'
-    const [collapsed, setCollapsed] = useState<boolean>(true)
+
+    //const [collapsed, setCollapsed] = useState<boolean>(true)
+    const [collapsed, dispatch] = useReducer(reducer, true)
 
     const collapseChange = () => {
-        setCollapsed(!collapsed)
+        debugger;
+        dispatch({type: 'TOGGLE-COLLAPSED'})
     }
 
-    console.log("Accordion rendering")
+
     return (
         <div>
             <UncontrolledAccordionTitle title={title} handler={collapseChange}/>
@@ -44,4 +66,8 @@ function UncontrolledAccordionBody() {
     )
 }
 
-export default UncontrolledAccordion;
+
+
+
+
+

@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "source-map-loader": "^1.0.0",
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
