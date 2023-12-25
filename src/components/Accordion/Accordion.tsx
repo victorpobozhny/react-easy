@@ -11,8 +11,8 @@ export type  AccordionPropsType = {
     items: ItemType[]
     callback: (value: any) => void
 }
-
-function Accordion(props: AccordionPropsType) {
+const Accordion = React.memo(AccordionSecret)
+function AccordionSecret(props: AccordionPropsType) {
 
     console.log("Accordion rendering")
     return (
@@ -29,8 +29,8 @@ type AccordionBodyPropsType = {
     items: ItemType[]
     callback: (value: any) => void
 }
-
-function AccordionBody(props: AccordionBodyPropsType) {
+const AccordionBody = React.memo(AccordionBodySecret)
+function AccordionBodySecret(props: AccordionBodyPropsType) {
     console.log("AccordionBody rendering")
     const onclick = (value: any, title: string) => {
         props.callback(`${value}. ${title}`)
@@ -48,8 +48,8 @@ type AccordionTitlePropsType = {
     title: string
     onChange: () => void
 }
-
-function AccordionTitle(props: AccordionTitlePropsType) {
+const AccordionTitle = React.memo(AccordionTitleSecret)
+function AccordionTitleSecret(props: AccordionTitlePropsType) {
     const onClickHandler = () => {
         props.onChange()
     }
