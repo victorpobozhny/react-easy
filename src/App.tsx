@@ -6,9 +6,17 @@ import UncontrolledAccordion from "./components/UncontrolledAccordion";
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import {ItemType, Select} from "./components/Select/Select";
+import {v1} from "uuid";
+
+
+export const itemsArray = [{title: 'Bob', value: '1'}, {title: 'Mike', value: '2'}, {title: 'John', value: '3'}]
+
 
 function App() {
-
+    const whowasclicked = (value: any) => {
+        console.log(value)
+    }
     const [collapsed, setCollapsed] = useState(true)
 
     function onClickHandler() {
@@ -16,16 +24,32 @@ function App() {
     }
 
     const [state, setState] = useState<number>(0)
-
     const [stateOnOff, setStateOnOff] = useState<boolean>(false)
     const [switchOn, setSwitchOn] = useState<boolean>(false)
+    const [selectItems, setSelectItems] = useState<ItemType[]>([
+        {title: 'Minsk', value: false},
+        {title: 'Brest', value: false},
+        {title: 'Grodna', value: false},
+    ])
+
+
+    const [value, setValue] = useState('')
+
+    const onChange = () => {
+
+    }
     return (
         <div className={'App'}>
+
+
             <PageTitle title={'React - easy'}/>
 
             <Accordion titleValue={"Title Controlled Accordion 1 (click me :)"}
                        collapsed={collapsed}
-                       onChange={onClickHandler}/>
+                       onChange={onClickHandler}
+                       items={itemsArray}
+                       callback={whowasclicked}
+            />
             <Rating
                 value={state}
                 controlRating={setState}/>
@@ -38,6 +62,12 @@ function App() {
             <UncontrolledRating/>
             <UncontrolledOnOff setSwitchOn={setSwitchOn}/>
             <p>{switchOn.toString()}</p>
+
+
+            <p>========================================================</p>
+            <Select items={selectItems} value={value} onChange={onChange}/>
+
+
         </div>
     );
 }
