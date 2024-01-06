@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {Meta} from "@storybook/react";
 import {Select} from "../components/Select/Select";
 import {log} from "util";
@@ -98,6 +98,53 @@ export const HelpsToReactMemo = () => {
 };
 
 
+export const UseCallback = () => {
+    console.log('Helps to react memo')
+
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState(['React', 'Css', 'HTML'])
+//из-за фильтра у нас каждый раз создавался новый массив, поэтому происходила перерисовка и компоненты Users даже когда
+    // сами users не менялись. поэтому добавили в useMemo, указав зависимость от массива users. теперь каждый раз будет
+    // браться из кеша кроме того случая, если изменится users
+    const memoisedBooks = useMemo(() => {
+        return books.filter(el => el.toLowerCase().indexOf('c') > -1)
+    }, [books])
+
+    const callbackForBooks = useCallback(() => {
+        const newBooks = [...books, `newBook name with count: #${Math.floor(Math.random() * 10)}`]
+        setBooks(newBooks)
+    }, [books])
+
+    return (
+        <div>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+            {counter}
+            <Books books={memoisedBooks} callback={callbackForBooks}/>
+        </div>
+    );
+};
+type BookSecretProps = {
+    books: Array<string>
+    callback: () => void
+}
+const BooksSecret = (props: BookSecretProps) => {
+    console.log('books')
+    const onClickHandler = () => {
+        props.callback()
+    }
+    return (
+        <div>
+            <button onClick={onClickHandler}>+</button>
+            {
+                props.books.map((el, i) => {
+                    return <div key={i}>{el}</div>
+                })}
+
+        </div>
+    );
+};
+const Books = React.memo(BooksSecret)
+
 type Count = {
     count: number
 }
@@ -155,16 +202,16 @@ export const Training = () => {
     const addCity = () => {
         setCities([...cities, {
             id: v1(),
-            name: `New Random City #${Math.floor(Math.random()*10)}`,
+            name: `New Random City #${Math.floor(Math.random() * 10)}`,
             population: Math.random() * 1000000
         }])
     }
 
-    const smallCities = useMemo(()=> {
-        return cities.filter(el=>el.population<1000000)
+    const smallCities = useMemo(() => {
+        return cities.filter(el => el.population < 1000000)
     }, [cities])
-    const bigCities = useMemo(()=> {
-        return cities.filter(el=>el.population>1000000)
+    const bigCities = useMemo(() => {
+        return cities.filter(el => el.population > 1000000)
     }, [cities])
 
     const [count, setCount] = useState(0)
