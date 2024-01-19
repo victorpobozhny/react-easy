@@ -8,12 +8,18 @@ import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import {ItemType, Select} from "./components/Select/Select";
 import {v1} from "uuid";
+import {Clock} from "./components/Clock/Clock";
 
 
 export const itemsArray = [{title: 'Bob', value: '1'}, {title: 'Mike', value: '2'}, {title: 'John', value: '3'}]
 
 
 function App() {
+
+    const [analog, setAnalog]= useState(false)
+    const setAnalogHandler = ()=> {
+        setAnalog(!analog)
+    }
     const whowasclicked = (value: any) => {
         console.log(value)
     }
@@ -43,7 +49,7 @@ function App() {
 
 
             <PageTitle title={'React - easy'}/>
-
+            <Clock analog={analog} setAnalog={setAnalogHandler}/>
             <Accordion titleValue={"Title Controlled Accordion 1 (click me :)"}
                        collapsed={collapsed}
                        onChange={onClickHandler}
