@@ -39,14 +39,6 @@ export const SetTimeoutExample1 = () => {
 
     const [state, setState] = useState<number>(0)
     const [fake, setFake] = useState(99)
-    // useEffect(()=>{
-    //     setTimeout(()=>{
-    //         document.title = state.toString()
-    //         console.log(`timeout. i'm changing title`)
-    //     }, 3000)
-    //
-    // }, [state])
-
 
     useEffect(() => {
         setInterval(() => {
@@ -56,7 +48,6 @@ export const SetTimeoutExample1 = () => {
 
     return (
         <div>
-
             Count
             <button onClick={() => setState(state + 1)}>+</button>
             <span>{state}</span>

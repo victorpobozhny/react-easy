@@ -7,7 +7,6 @@ import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRa
 import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import {ItemType, Select} from "./components/Select/Select";
-import {v1} from "uuid";
 import {Clock} from "./components/Clock/Clock";
 
 
@@ -16,8 +15,8 @@ export const itemsArray = [{title: 'Bob', value: '1'}, {title: 'Mike', value: '2
 
 function App() {
 
-    const [analog, setAnalog]= useState(false)
-    const setAnalogHandler = ()=> {
+    const [analog, setAnalog] = useState(false)
+    const setAnalogHandler = () => {
         setAnalog(!analog)
     }
     const whowasclicked = (value: any) => {
